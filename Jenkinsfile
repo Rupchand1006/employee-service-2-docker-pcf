@@ -1,18 +1,20 @@
 pipeline {
     agent any
-
     stages {
-        stage('Build') {
+        stage ('Compile Stage') {
+
             steps {
-                
-                  sh "${mvnHome}/bin mvn clean install -f employee-service/pom.xml"
-                
-                
+                withMaven(maven : 'apache-maven-3.6.3') {
+                    bat 'mvn clean compile'
+                }
             }
         }
-        stage('Deploy') {
+        
+        stage ('Install Stage') {
             steps {
-                
+                withMaven(maven : 'apache-maven-3.6.3') {
+                    bat 'mvn install'
+                }
             }
         }
     }
