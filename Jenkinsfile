@@ -20,8 +20,7 @@ pipeline {
         
         stage ('Deploy') {
     	steps{
-        bat 'cf login -u rupchand.dewangan@gmail.com -p Anandi24$'
-        bat 'cf t -o Empower -s production'
+        bat 'cf login -u rupchand.dewangan@gmail.com -p Anandi24$ -a https://api.run.pivotal.io -o Empower -s production'
         bat 'cf push'
     	}
 	}
