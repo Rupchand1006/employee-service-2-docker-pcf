@@ -1,0 +1,14 @@
+---
+applications:
+  - name: employee-service
+    memory: 1G
+    disk_quota: 1G
+    instances: 1
+    profiles: qa
+    path: target\employee-service-1.0.0-SNAPSHOT.jar
+    random-route: true
+    services:
+      - postgreSQL
+    buildpacks:
+      - https://github.com/cloudfoundry/java-buildpack.git
+      
