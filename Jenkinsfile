@@ -4,9 +4,9 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                withMaven(maven: 3.6.3) {
-                  sh 'mvn clean install'
-                }
+                
+                  sh "${mvnHome}/bin mvn clean install -f employee-service/pom.xml"
+                
                 
             }
         }
