@@ -4,6 +4,15 @@ pipeline {
         maven 'apache-maven-3.6.3'
         jdk 'JAVA_HOME' 
     }
+    
+    environment {
+        CF_API_ENDPOINT = 'https://api.run.pivotal.io'
+        CF_CREDENTIALS_USER='rupchand.dewangan@gmail.com'
+        CF_CREDENTIALS_PASSWORD='Anandi24$'
+        CF_ORG='Empower'
+        CF_SPACE='Production'
+    }
+    
     stages {
         stage ('Compile Stage') {
 
@@ -20,7 +29,7 @@ pipeline {
         
         stage ('Deploy') {
     	steps{
-        bat 'cf login -u rupchand.dewangan@gmail.com -p Anandi24$ -a https://api.run.pivotal.io -o Empower -s production'
+        bat 'cf login -u CF_CREDENTIALS_USER -p CF_CREDENTIALS_PASSWORD -a CF_API_ENDPOINT -o CF_ORG -s CF_SPACE'
         bat 'cf push'
     	}
 	}
