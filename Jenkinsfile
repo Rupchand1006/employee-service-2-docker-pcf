@@ -29,7 +29,7 @@ pipeline {
         
         stage ('Deploy') {
     	steps{
-        bat 'cf login -u $CF_CREDENTIALS_USER -p $CF_CREDENTIALS_PASSWORD -a $CF_API_ENDPOINT -o $CF_ORG -s $CF_SPACE'
+        bat 'cf login -u $CF_CREDENTIALS_USER -p $CF_CREDENTIALS_PASSWORD -a https://api.run.pivotal.io -o $CF_ORG -s $CF_SPACE'
         bat 'cf push'
     	}
 	}
